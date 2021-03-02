@@ -5,10 +5,10 @@ module.exports = {
         if (message.member.roles.cache.some(r => r.name === "Mods" || r.name === "LongTimeFriens")) {
             const channel = '816203655845642270';
 
-            const nsfw = message.guild.roles.cache.find(role => role.name === "NSFW");
-            const ffxiv= message.guild.roles.cache.find(role => role.name === "FFXIV");
-            const vrchat = message.guild.roles.cache.find(role => role.name === "VRchat");
             const update = message.guild.roles.cache.find(role => role.name === "Updates");
+            const vrchat = message.guild.roles.cache.find(role => role.name === "VRchat");
+            const ffxiv= message.guild.roles.cache.find(role => role.name === "FFXIV");
+            const nsfw = message.guild.roles.cache.find(role => role.name === "NSFW");
             const theme = message.guild.roles.cache.find(role => role.id === '799227126653779979');
 
             const updateEmoji = '🌈';
@@ -43,17 +43,18 @@ module.exports = {
 
                 if (reaction.message.channel.id == channel) {
 
-                    if (reaction.emoji.name === nsfwEmoji) {
-                        await reaction.message.guild.members.cache.get(user.id).roles.add(nsfw);
-                    }
-                    if (reaction.emoji.name === ffxivEmoji) {
-                        await reaction.message.guild.members.cache.get(user.id).roles.add(ffxiv);
+
+                    if (reaction.emoji.name === updateEmoji) {
+                        await reaction.message.guild.members.cache.get(user.id).roles.add(update);
                     }
                     if (reaction.emoji.name === vrchatEmoji) {
                         await reaction.message.guild.members.cache.get(user.id).roles.add(vrchat);
                     }
-                    if (reaction.emoji.name === updateEmoji) {
-                        await reaction.message.guild.members.cache.get(user.id).roles.add(update);
+                    if (reaction.emoji.name === ffxivEmoji) {
+                        await reaction.message.guild.members.cache.get(user.id).roles.add(ffxiv);
+                    }    
+                    if (reaction.emoji.name === nsfwEmoji) {
+                        await reaction.message.guild.members.cache.get(user.id).roles.add(nsfw);
                     }
                     if (reaction.emoji.name === themeEmoji) {
                         await reaction.message.guild.members.cache.get(user.id).roles.add(theme);
@@ -71,18 +72,18 @@ module.exports = {
                 if (!reaction.message.guild) return;
 
                 if (reaction.message.channel.id == channel) {
-
-                    if (reaction.emoji.name === nsfwEmoji) {
-                        await reaction.message.guild.members.cache.get(user.id).roles.remove(nsfw);
-                    }
-                    if (reaction.emoji.name === ffxivEmoji) {
-                        await reaction.message.guild.members.cache.get(user.id).roles.remove(ffxiv);
+                    
+                    if (reaction.emoji.name === updateEmoji) {
+                        await reaction.message.guild.members.cache.get(user.id).roles.remove(update);
                     }
                     if (reaction.emoji.name === vrchatEmoji) {
                         await reaction.message.guild.members.cache.get(user.id).roles.remove(vrchat);
                     }
-                    if (reaction.emoji.name === updateEmoji) {
-                        await reaction.message.guild.members.cache.get(user.id).roles.remove(update);
+                    if (reaction.emoji.name === ffxivEmoji) {
+                        await reaction.message.guild.members.cache.get(user.id).roles.remove(ffxiv);
+                    }
+                    if (reaction.emoji.name === nsfwEmoji) {
+                        await reaction.message.guild.members.cache.get(user.id).roles.remove(nsfw);
                     }
                     if (reaction.emoji.name === themeEmoji) {
                         await reaction.message.guild.members.cache.get(user.id).roles.remove(theme);
