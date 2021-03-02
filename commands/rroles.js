@@ -3,13 +3,13 @@ module.exports = {
     description: "sets up roles using reactions for the roles channel",
     async execute(client, message, args, Discord) {
         if (message.member.roles.cache.some(r => r.name === "Mods" || r.name === "LongTimeFriens")) {
-            const channel = '816203655845642270';
+            const channel = "816203655845642270";
 
             const update = message.guild.roles.cache.find(role => role.name === "Updates");
             const vrchat = message.guild.roles.cache.find(role => role.name === "VRchat");
             const ffxiv= message.guild.roles.cache.find(role => role.name === "FFXIV");
             const nsfw = message.guild.roles.cache.find(role => role.name === "NSFW");
-            const theme = message.guild.roles.cache.find(role => role.id === '799227126653779979');
+            const theme = message.guild.roles.cache.find(role => role.id === "799227126653779979");
 
             const updateEmoji = '🌈';
             const vrchatEmoji = '😈';
@@ -42,7 +42,6 @@ module.exports = {
                 if (!reaction.message.guild) return;
 
                 if (reaction.message.channel.id == channel) {
-
 
                     if (reaction.emoji.name === updateEmoji) {
                         await reaction.message.guild.members.cache.get(user.id).roles.add(update);

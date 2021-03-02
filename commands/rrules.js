@@ -3,7 +3,7 @@ module.exports = {
     description: "sets up roles using reactions for the rules channel",
     async execute(client, message, args, Discord) {
         if (message.member.roles.cache.some(r => r.name === "Mods" || r.name === "LongTimeFriens")) {
-            const channel = '816154138600931329';
+            const channel = "816154138600931329";
             const ruleAgree = message.guild.roles.cache.find(role => role.name === "Members");
 
             const ruleAgreeEmoji = '✅';
