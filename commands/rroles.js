@@ -2,6 +2,7 @@ module.exports = {
     name: 'rroles',
     description: "sets up roles using reactions for the roles channel",
     async execute(client, message, args, Discord) {
+        const client = new Discord.Client({partials: ["MESSAGE", "CHANNEL", "REACTION" ]});
         if (message.member.roles.cache.some(r => r.name === "Mods" || r.name === "LongTimeFriens")) {
             const channel = "816203655845642270";
 
