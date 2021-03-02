@@ -1,7 +1,7 @@
 module.exports = {
     name: 'help',
     description: "embed helper",
-    execute(message, args, Discord) {
+    execute(client, message, args, Discord) {
         const newEmbed = new Discord.MessageEmbed()
         .setColor('#730073')
         .setTitle('Ayudame')

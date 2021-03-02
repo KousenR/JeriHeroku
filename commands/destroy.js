@@ -1,7 +1,7 @@
 module.exports = {
     name: 'destroy',
     description: "deletes messages deemed poopy",
-    async execute(message, args) {
+    async execute(client, message, args) {
         if(message.member.roles.cache.some(r => r.name === "Mods" || r.name === "LongTimeFriens")) {
             if(!args[0]) return message.reply("Please enter the amount of messages that you want to delete");
             if(isNaN(args[0])) return message.reply("Please enter a real number");
