@@ -2,7 +2,6 @@ module.exports = {
     name: 'rroles',
     description: "sets up roles using reactions for the roles channel",
     async execute(client, message, args, Discord) {
-        const oldreact = new Discord.Client({partials: ["MESSAGE", "CHANNEL", "REACTION" ]});
         if (message.member.roles.cache.some(r => r.name === "Mods" || r.name === "LongTimeFriens")) {
             const channel = "816203655845642270";
 
@@ -36,7 +35,7 @@ module.exports = {
             messageEmbed.react(nsfwEmoji);
             messageEmbed.react(themeEmoji);
 
-            oldreact.on('messageReactionAdd', async (reaction, user) => {
+            client.on('messageReactionAdd', async (reaction, user) => {
                 if (reaction.message.partial) await reaction.message.fetch();
                 if (reaction.partial) await reaction.fetch();
                 if (user.bot) return;
@@ -59,13 +58,13 @@ module.exports = {
                     if (reaction.emoji.name === themeEmoji) {
                         await reaction.message.guild.members.cache.get(user.id).roles.add(theme);
                     }
-                    else {
+                }
+                else{
                         return;
                     }
-                }
-            });
+                });
 
-            oldreact.on('messageReactionRemove', async (reaction, user) => {
+            client.on('messageReactionRemove', async (reaction, user) => {
                 if (reaction.message.partial) await reaction.message.fetch();
                 if (reaction.partial) await reaction.fetch();
                 if (user.bot) return;
@@ -88,11 +87,11 @@ module.exports = {
                     if (reaction.emoji.name === themeEmoji) {
                         await reaction.message.guild.members.cache.get(user.id).roles.remove(theme);
                     }
-                    else {
+                }
+                else{
                         return;
                     }
-                }
-            });
+                });
         }
         else{
             message.reply ("I saw that");

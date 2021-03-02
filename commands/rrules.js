@@ -2,7 +2,6 @@ module.exports = {
     name: 'rrules',
     description: "sets up roles using reactions for the rules channel",
     async execute(client, message, args, Discord) {
-        const oldreact = new Discord.Client({partials: ["MESSAGE", "CHANNEL", "REACTION" ]});
         if (message.member.roles.cache.some(r => r.name === "Mods" || r.name === "LongTimeFriens")) {
             const channel = "816154138600931329";
             const ruleAgree = message.guild.roles.cache.find(role => role.name === "Members");
@@ -18,7 +17,7 @@ module.exports = {
             let messageEmbed = await message.channel.send(embed);
             messageEmbed.react(ruleAgreeEmoji);
 
-            oldreact.on('messageReactionAdd', async (reaction, user) => {
+            client.on('messageReactionAdd', async (reaction, user) => {
                 if (reaction.message.partial) await reaction.message.fetch();
                 if (reaction.partial) await reaction.fetch();
                 if (user.bot) return;
@@ -28,13 +27,13 @@ module.exports = {
                     if (reaction.emoji.name === ruleAgreeEmoji) {
                         await reaction.message.guild.members.cache.get(user.id).roles.add(ruleAgree);
                     }
-                    else {
+                }
+                else{
                         return;
                     }
-                }
-            });
+                });
 
-            oldreact.on('messageReactionRemove', async (reaction, user) => {
+            client.on('messageReactionRemove', async (reaction, user) => {
                 if (reaction.message.partial) await reaction.message.fetch();
                 if (reaction.partial) await reaction.fetch();
                 if (user.bot) return;
@@ -44,11 +43,11 @@ module.exports = {
                     if (reaction.emoji.name === ruleAgreeEmoji) {
                         await reaction.message.guild.members.cache.get(user.id).roles.remove(ruleAgree);
                     }
-                    else {
+                }
+                else{
                         return;
                     }
-                }
-            });
+                });
         }
         else{
             message.reply ("I saw that");
