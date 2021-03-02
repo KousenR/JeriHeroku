@@ -11,10 +11,10 @@ module.exports = {
             const update = message.guild.roles.cache.find(role => role.name === "Updates");
             const theme = message.guild.roles.cache.find(role => role.id === '799227126653779979');
 
-            const nsfwEmoji = '🔞';
-            const ffxivEmoji = '🏰';
-            const vrchatEmoji = '😈';
             const updateEmoji = '🌈';
+            const vrchatEmoji = '😈';
+            const ffxivEmoji = '🏰';
+            const nsfwEmoji = '🔞';
             const themeEmoji = '💖';
 
 
@@ -29,10 +29,10 @@ module.exports = {
                     + `${themeEmoji} for the theme of the week role`);
 
             let messageEmbed = await message.channel.send(embed);
-            messageEmbed.react(nsfwEmoji);
-            messageEmbed.react(ffxivEmoji);
-            messageEmbed.react(vrchatEmoji);
             messageEmbed.react(updateEmoji);
+            messageEmbed.react(vrchatEmoji);
+            messageEmbed.react(ffxivEmoji);
+            messageEmbed.react(nsfwEmoji);
             messageEmbed.react(themeEmoji);
 
             client.on('messageReactionAdd', async (reaction, user) => {
